@@ -26,6 +26,10 @@ def read_imagefile(file) -> Image:
     image = Image.open(BytesIO(file))
     return image
 
+@app.get("/")
+def root():
+    return {"api": "v2"}
+
 @app.post("/compare-images/")
 async def compare_image_files(image1: UploadFile = File(...), image2: UploadFile = File(...)):
     if image1.content_type not in ["image/jpeg", "image/png", "image/jpg"]:
@@ -51,3 +55,7 @@ async def compare_image_files(image1: UploadFile = File(...), image2: UploadFile
     percentage_score = round(similarity_score * 100, 2)  # Round to 2 decimal places
 
     return JSONResponse(content={"similarity_score": percentage_score})
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -1,0 +1,11 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: image-similarity-v1
+    src: .
+    engine: python3.9
+    commands:
+      - apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+    run: python -m uvicorn api:app
+    primary: true
+    public: true

@@ -1,0 +1,19 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: v1
+    src: v1
+    engine: python3.9
+    commands:
+      - apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+    run: python -m uvicorn api:app
+    primary: true
+    public: true
+  - name: v2
+    src: v2
+    engine: python3.9
+    commands:
+      - apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+    run: python -m uvicorn api:app
+    primary: false
+    public: true

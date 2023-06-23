@@ -69,6 +69,10 @@ def compare_images(image1, image2):
 
     return similarity
 
+@app.get("/")
+def root():
+    return {"api": "v1"}
+
 @app.post("/compare_images/")
 async def compare_images_endpoint(image1: UploadFile = File(...), image2: UploadFile = File(...)):
     try:

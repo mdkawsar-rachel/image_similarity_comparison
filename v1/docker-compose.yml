@@ -1,0 +1,9 @@
+version: "3.3"
+
+services:
+  api-v1:
+    build: .
+    command: python3 api.py
+    restart: on-failure
+    ports:
+      - "8001:8001"
