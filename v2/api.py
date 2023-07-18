@@ -1,10 +1,12 @@
 import cv2
 import numpy as np
 from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from skimage.metrics import structural_similarity as compare_ssim
 from io import BytesIO
 from PIL import Image
+
 
 app = FastAPI()
 
