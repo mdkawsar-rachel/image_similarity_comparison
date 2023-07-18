@@ -8,6 +8,13 @@ from PIL import Image
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # Replace with the actual origin of your React application
+    allow_methods=["POST"],
+    allow_headers=["*"],
+)
+
 def compare_images(img1, img2):
     # Convert images to grayscale
     img1_gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
